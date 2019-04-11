@@ -1,30 +1,12 @@
 <?php
-/*
-$tablica = [1,2,3,4,5];
 
-echo $tablica[0].'<br/>';
-
-$n = count($tablica);
-for ($i=0; $i < $n ; $i++) {
-  // code...
-  echo $tablica[$i].'<br/>';
-}
-*/
+include('db/pdo.php');
 include('utils/utils.php');
-/*
-$tablica = [1,2,3,4,5];
 
-dump($tablica);
-*/
 dump($_GET);
- ?>
 
- <a href="index.php?v=klienci">Klienci</a>
- <a href="index.php?v=pojazdy">Pojazdy</a>
- <a href="index.php?v=magazyny">Magazyny</a>
- <hr>
 
- <?php
+
   if(array_key_exists('v',$_GET)){
     $module = $_GET['v'];
   }
@@ -46,9 +28,16 @@ dump($_GET);
 
   $moduleDir = 'modules/' . $module . '.php';
 
+
+
   if(file_exists($moduleDir)){
 
-      include($moduleDir);
+       ob_start();
+       include($moduleDir);
+       $content = ob_get_contents();
+       ob_end_clean();
+
+       include('layouts/admin.php');
     }
     else {
       header("HTTP/1.1 404 Not Found");
