@@ -11,10 +11,22 @@
     <title>Kurier!</title>
   </head>
   <body>
-    <a href="index.php?v=klienci">Klienci</a>
-    <a href="index.php?v=pojazdy">Pojazdy</a>
-    <a href="index.php?v=magazyny">Magazyny</a>
-    <hr>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top" >
+  <a class="navbar-brand" href="#">KURIER</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="index.php?v=klienci">Klienci <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="index.php?v=pojazdy">Pojazdy</a>
+      <a class="nav-item nav-link" href="index.php?v=magazyny">Magazyny</a>
+    </div>
+  </div>
+</nav>
+
 
     <div class="container">
         <?php echo $content; ?>

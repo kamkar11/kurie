@@ -1,31 +1,46 @@
+</br></br>
+
 <h1>Klienci</h1>
 
 <?php
+/*
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
+
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="index.php?v=klienci">Klienci</a></li>
+<li class="breadcrumb-item"><a href="index.php?v=pojazdy">Pojazdy</a></li>
+<li class="breadcrumb-item active" aria-current="page"><a href="index.php?v=magazyny">Magazyny</a></li>
+</ol>
+</nav>
+*/
   $result = $pdo->query('SELECT * FROM klienci ORDER BY ID_KLIENTA DESC');
   $klienci = $result->fetchAll();
   //dump($klienci);
 
  ?>
 
+</br>
+<a href="index.php?v=add_klient" class="btn btn-primary btn-lg">Dodaj klienta</a>
+</br></br></br>
 
-<a href="index.php?v=add_klient" class="btn btn-primary">Dodaj klienta</a>
-
-
-<table class="table table-hover">
-
-  <tr>
-      <th>ID</th>
-      <th>imie</th>
-      <th>nazwisko</th>
-      <th>ulica</th>
-      <th>nr_domu</th>
-      <th>miasto</th>
-      <th>telefon</th>
-      <th>Edycja</th>
-      <th>Usuwanie</th>
-  </tr>
-
+<div class="table-responsive-md">
+    <table class="table table-primary ">
+      <thead class="thead-dark">
+      <tr>
+          <th>ID</th>
+          <th>imie</th>
+          <th>nazwisko</th>
+          <th>ulica</th>
+          <th>nr_domu</th>
+          <th>miasto</th>
+          <th>telefon</th>
+          <th>Edycja</th>
+          <th>Usuwanie</th>
+      </tr>
+      </thead>
+</div>
   <?php
     foreach ($klienci as $klient) {
 

@@ -3,7 +3,7 @@
 include('db/pdo.php');
 include('utils/utils.php');
 
-dump($_GET);
+//dump($_GET);
 
 
 
