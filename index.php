@@ -11,7 +11,7 @@ include('utils/utils.php');
     $module = $_GET['v'];
   }
   else{
-      $module = 'klienci';
+      $module = 'klienci/klienci';
   }
 
 /*

@@ -20,9 +20,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="index.php?v=klienci">Klienci <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="index.php?v=klienci/klienci">Klienci <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="index.php?v=pojazdy">Pojazdy</a>
       <a class="nav-item nav-link" href="index.php?v=magazyny">Magazyny</a>
+      <a class="nav-item nav-link" href="">Kurierzy</a>
+      <a class="nav-item nav-link" href="">Paczki</a>
     </div>
   </div>
 </nav>
