@@ -12,6 +12,4 @@ $result->execute();
 
 header('location: index.php?v=klienci/klienci');
 
-
-
  ?>
