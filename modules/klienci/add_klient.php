@@ -19,15 +19,14 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
     $result->bindParam(':telefon',$_POST['telefon'] );
     $result->execute();
 
-    header('location: index.php?v=klienci');
-
+    header('location: index.php?v=klienci/klienci');
 
 }
 
  ?>
 
 
-
+</br>
 <h1>Dodawanie klienta</h1>
 
 <form method="post">

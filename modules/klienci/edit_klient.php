@@ -7,6 +7,10 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
       $result = $pdo->prepare('SELECT id_klient.NEXTVAL AS nextInsertID FROM DUAL');
       $result->execute();
       $nextInsertId = $result->fetchColumn(0);
+
+
+      <label for="time">TIMES </label>
+      <input type="time" name="telefon" >
 */
     $result = $pdo->prepare('UPDATE klienci SET imie = :imie, nazwisko = :nazwisko, ulica = :ulica,
                                                 nr_domu = :nr_domu, miasto = :miasto, telefon = :telefon
@@ -21,7 +25,7 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
     $result->bindParam(':id',$_GET['id']);
     $result->execute();
 
-    header('location: index.php?v=klienci');
+    header('location: index.php?v=klienci/klienci');
 }
 
 /*
@@ -31,7 +35,7 @@ if(isset($_GET)){
 */
 
 if(!isset($_GET['id'])){
-    header('location: index.php?v=klienci');
+    header('location: index.php?v=klienci/klienci');
 }
 
 $result = $pdo->prepare('SELECT * FROM klienci WHERE ID_KLIENTA= :id');
@@ -46,8 +50,8 @@ $klienci = $result->fetch(); // przechowuje
  ?>
 
 
-
-<h1>Dodawanie klienta</h1>
+</br>
+<h1>Edycja klienta</h1>
 
 <form method="post">
   <div class="form-group">

@@ -22,11 +22,11 @@
  ?>
 
 </br>
-<a href="index.php?v=add_klient" class="btn btn-primary btn-lg">Dodaj klienta</a>
+<a href="index.php?v=klienci/add_klient" class="btn btn-primary btn-lg">Dodaj klienta</a>
 </br></br></br>
 
 <div class="table-responsive-md">
-    <table class="table table-primary ">
+    <table class="table table-primary table-sm ">
       <thead class="thead-dark">
       <tr>
           <th>ID</th>
@@ -55,11 +55,11 @@
        <td><?php  echo $klient['MIASTO'];   ?> </td>
        <td><?php  echo $klient['TELEFON'];   ?> </td>
        <td>
-          <a href="index.php?v=edit_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-success">Edytuj</a>
+          <a href="index.php?v=klienci/edit_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-success">Edytuj</a>
 
         </td>
        <td>
-          <a href="index.php?v=delete_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-danger">Usuń</a>
+          <a href="index.php?v=klienci/delete_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-danger">Usuń</a>
         </td>
 
    </tr>
