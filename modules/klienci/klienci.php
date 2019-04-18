@@ -59,7 +59,7 @@
 
         </td>
        <td>
-          <a href="index.php?v=klienci/delete_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-danger">Usuń</a>
+          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=klienci/delete_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-danger">Usuń</a>
         </td>
 
    </tr>

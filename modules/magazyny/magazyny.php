@@ -45,7 +45,8 @@
 
         </td>
        <td>
-          <a href="index.php?v=magazyny/delete_magazyn&id=<?php echo $magazyn['ID_MAGAZYNU']; ?>" class="btn btn-danger">Usuń</a>
+          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=magazyny/delete_magazyn&id=<?php echo $magazyn['ID_MAGAZYNU']; ?>" class="btn btn-danger">Usuń</a>
+
         </td>
 
    </tr>

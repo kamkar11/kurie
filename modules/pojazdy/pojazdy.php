@@ -45,7 +45,7 @@
 
         </td>
        <td>
-          <a href="index.php?v=pojazdy/delete_pojazd&id=<?php echo $pojazd['ID_POJAZDU']; ?>" class="btn btn-danger">Usuń</a>
+          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=pojazdy/delete_pojazd&id=<?php echo $pojazd['ID_POJAZDU']; ?>" class="btn btn-danger">Usuń</a>
         </td>
 
    </tr>
