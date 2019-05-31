@@ -3,22 +3,34 @@
 <h1>Klienci</h1>
 
 <?php
+
+    $cur = oci_new_cursor($conn);
+    $stmt = oci_parse($conn, "begin KLIENCI_ALL(:PLOUG_CURSOR); end;");
+    oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
+    oci_execute($stmt);
+    oci_execute($cur);
+
+
+
+
+
+
 /*
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-
-<nav aria-label="breadcrumb">
-<ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="index.php?v=klienci">Klienci</a></li>
-<li class="breadcrumb-item"><a href="index.php?v=pojazdy">Pojazdy</a></li>
-<li class="breadcrumb-item active" aria-current="page"><a href="index.php?v=magazyny">Magazyny</a></li>
-</ol>
-</nav>
-*/
   $result = $pdo->query('SELECT * FROM klienci ORDER BY ID_KLIENTA DESC');
   $klienci = $result->fetchAll();
   //dump($klienci);
+*/
+//$result = $pdo->prepare("klienciall();");
 
+//"begin TOOLS_PKG.getOrgCode(?); end;"
+//"CALL klienciall()"
+
+//$stmt->bindParam(1, 'hai!', PDO::PARAM_STR);
+//$rs = $stmt->execute();
+
+//$klienci = $result->fetchAll();
+
+// PDO::FETCH_ASSOC
  ?>
 
 </br>
@@ -29,7 +41,7 @@
     <table class="table table-primary table-sm ">
       <thead class="thead-dark">
       <tr>
-          <th>ID</th>
+
           <th>imie</th>
           <th>nazwisko</th>
           <th>ulica</th>
@@ -42,18 +54,18 @@
       </thead>
 </div>
   <?php
-    foreach ($klienci as $klient) {
-
+    //foreach ($klienci as $klient) {
+    while (($klient = oci_fetch_array($cur, OCI_BOTH))) {
    ?>
 
    <tr>
-       <td><?php  echo $klient['ID_KLIENTA'];   ?></td>
-       <td><?php  echo $klient['IMIE'];   ?></td>
-       <td><?php  echo $klient['NAZWISKO'];   ?></td>
-       <td><?php  echo $klient['ULICA'];   ?> </td>
-       <td><?php  echo $klient['NR_DOMU'];   ?> </td>
-       <td><?php  echo $klient['MIASTO'];   ?> </td>
-       <td><?php  echo $klient['TELEFON'];   ?> </td>
+
+       <td><?php  echo  $klient['IMIE'];   ?></td>
+       <td><?php  echo  $klient['NAZWISKO'];   ?></td>
+       <td><?php  echo  $klient['ULICA'];   ?> </td>
+       <td><?php  echo  $klient['NR_DOMU'];   ?> </td>
+       <td><?php  echo  $klient['MIASTO'];   ?> </td>
+       <td><?php  echo  $klient['TELEFON'];   ?> </td>
        <td>
           <a href="index.php?v=klienci/edit_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-success">Edytuj</a>
 
@@ -68,4 +80,11 @@
 
 
 
+
 </table>
+
+<?php
+oci_free_statement($stmt);
+oci_free_statement($cur); 
+oci_close($conn);
+ ?>

@@ -4,11 +4,17 @@
 
 <?php
 
-
+/*
   $result = $pdo->query('SELECT * FROM pojazdy ORDER BY ID_POJAZDU DESC');
   $pojazdy = $result->fetchAll();
   //dump($klienci);
+*/
 
+$cur = oci_new_cursor($conn);
+$stmt = oci_parse($conn, "begin POJAZDY_ALL(:PLOUG_CURSOR); end;");
+oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
+oci_execute($stmt);
+oci_execute($cur);
  ?>
 
 </br>
@@ -19,7 +25,7 @@
     <table class="table table-primary table-sm ">
       <thead class="thead-dark">
       <tr>
-          <th>ID</th>
+
           <th>Marka</th>
           <th>Model</th>
           <th>Nr_rej</th>
@@ -30,12 +36,11 @@
       </thead>
 </div>
   <?php
-    foreach ($pojazdy as $pojazd) {
+      while (($pojazd = oci_fetch_array($cur, OCI_BOTH))) {
 
    ?>
 
    <tr>
-       <td><?php  echo $pojazd['ID_POJAZDU'];   ?></td>
        <td><?php  echo $pojazd['MARKA'];   ?></td>
        <td><?php  echo $pojazd['MODEL_POJAZDU'];   ?></td>
        <td><?php  echo $pojazd['NR_REJESTRACYJNY'];   ?> </td>
@@ -55,3 +60,9 @@
 
 
 </table>
+
+<?php
+oci_free_statement($stmt);
+oci_free_statement($cur);
+oci_close($conn);
+ ?>

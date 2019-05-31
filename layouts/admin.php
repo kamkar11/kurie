@@ -23,7 +23,7 @@
       <a class="nav-item nav-link" href="index.php?v=klienci/klienci">Klienci <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="index.php?v=pojazdy/pojazdy">Pojazdy</a>
       <a class="nav-item nav-link" href="index.php?v=magazyny/magazyny">Magazyny</a>
-      <a class="nav-item nav-link" href="">Kurierzy</a>
+      <a class="nav-item nav-link" href="index.php?v=kurierzy/kurierzy">Kurierzy</a>
       <a class="nav-item nav-link" href="">Paczki</a>
     </div>
   </div>
@@ -34,6 +34,16 @@
         <?php echo $content; ?>
     </div>
 
+
+    <div class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+            <div class="width-constraint clearfix">
+                <p class="pull-left muted credit">YourApp v1.0.0</p>
+
+                <p class="pull-right muted credit">©2019 • CONFIDENTIAL ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

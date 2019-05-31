@@ -4,6 +4,19 @@
 if(isset($_POST['marka'] , $_POST['model_pojazdu'] , $_POST['nr_rejestracyjny'] ,
     $_POST['poj_pojazdu']  )){
 
+
+
+      $stmt = oci_parse($conn, "begin INSERT_POJAZD( :marka, :model_pojazdu, :nr_rejestracyjny, :poj_pojazdu); end;");
+
+
+      oci_bind_by_name($stmt, ":marka",  $_POST['marka']);
+      oci_bind_by_name($stmt, ":model_pojazdu",  $_POST['model_pojazdu']);
+      oci_bind_by_name($stmt, ":nr_rejestracyjny",  $_POST['nr_rejestracyjny']);
+      oci_bind_by_name($stmt, ":poj_pojazdu",  $_POST['poj_pojazdu']);
+
+
+      oci_execute($stmt);
+/*
     $result = $pdo->prepare('INSERT INTO pojazdy (ID_POJAZDU,MARKA,MODEL_POJAZDU,NR_REJESTRACYJNY,POJ_POJAZDU)
      VALUES (pojazd.NEXTVAL, :marka, :model_pojazdu, :nr_rejestracyjny,:poj_pojazdu)');
 
@@ -13,7 +26,7 @@ if(isset($_POST['marka'] , $_POST['model_pojazdu'] , $_POST['nr_rejestracyjny'] 
      $result->bindParam(':poj_pojazdu',$_POST['poj_pojazdu'] );
 
     $result->execute();
-
+*/
     header('location: index.php?v=pojazdy/pojazdy');
 
 }

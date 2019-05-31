@@ -3,15 +3,22 @@
 
 if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
     $_POST['nr_domu'] , $_POST['miasto'] , $_POST['telefon'] )){
+
+      $stmt = oci_parse($conn, "begin UPDATE_KLIENT(:id, :imie, :nazwisko, :ulica, :nr_domu, :miasto, :telefon); end;");
+
+      //oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
+      oci_bind_by_name($stmt, ":imie",  $_POST['imie']);
+      oci_bind_by_name($stmt, ":nazwisko",  $_POST['nazwisko']);
+      oci_bind_by_name($stmt, ":ulica",  $_POST['ulica']);
+      oci_bind_by_name($stmt, ":nr_domu",  $_POST['nr_domu']);
+      oci_bind_by_name($stmt, ":miasto",  $_POST['miasto']);
+      oci_bind_by_name($stmt, ":telefon",  $_POST['telefon']);
+
+      oci_bind_by_name($stmt, ":id",  $_GET['id']);
+
+      oci_execute($stmt);
+
 /*
-      $result = $pdo->prepare('SELECT id_klient.NEXTVAL AS nextInsertID FROM DUAL');
-      $result->execute();
-      $nextInsertId = $result->fetchColumn(0);
-
-
-      <label for="time">TIMES </label>
-      <input type="time" name="telefon" >
-*/
     $result = $pdo->prepare('UPDATE klienci SET imie = :imie, nazwisko = :nazwisko, ulica = :ulica,
                                                 nr_domu = :nr_domu, miasto = :miasto, telefon = :telefon
                                                 WHERE id_klienta = :id ');
@@ -24,27 +31,31 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
     $result->bindParam(':telefon',$_POST['telefon'] );
     $result->bindParam(':id',$_GET['id']);
     $result->execute();
-
+*/
     header('location: index.php?v=klienci/klienci');
 }
 
-/*
-if(isset($_GET)){
-    print_r($_GET);
-}
-*/
+
 
 if(!isset($_GET['id'])){
     header('location: index.php?v=klienci/klienci');
 }
-
+/*
 $result = $pdo->prepare('SELECT * FROM klienci WHERE ID_KLIENTA= :id');
 $result->bindParam(':id', $_GET['id']);
 $result->execute();
 
 $klienci = $result->fetch(); // przechowuje
+*/
+$cur = oci_new_cursor($conn);
+$stmt = oci_parse($conn, "begin SELECT_KLIENT_ID(:id, :PLOUG_CURSOR); end;");
 
+oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
+oci_bind_by_name($stmt, ":id",  $_GET['id']);
 
+oci_execute($stmt);
+oci_execute($cur);
+$klienci = oci_fetch_array($cur, OCI_BOTH);
 
 
  ?>

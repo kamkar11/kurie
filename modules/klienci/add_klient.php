@@ -8,6 +8,22 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
       $result->execute();
       $nextInsertId = $result->fetchColumn(0);
 */
+      $stmt = oci_parse($conn, "begin INSERT_KLIENT(:imie, :nazwisko, :ulica, :nr_domu, :miasto, :telefon); end;");
+
+      //oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
+      oci_bind_by_name($stmt, ":imie",  $_POST['imie']);
+      oci_bind_by_name($stmt, ":nazwisko",  $_POST['nazwisko']);
+      oci_bind_by_name($stmt, ":ulica",  $_POST['ulica']);
+      oci_bind_by_name($stmt, ":nr_domu",  $_POST['nr_domu']);
+      oci_bind_by_name($stmt, ":miasto",  $_POST['miasto']);
+      oci_bind_by_name($stmt, ":telefon",  $_POST['telefon']);
+
+      oci_execute($stmt);
+
+
+
+
+/*
     $result = $pdo->prepare('INSERT INTO klienci (ID_KLIENTA,IMIE,NAZWISKO,ULICA,NR_DOMU,MIASTO,TELEFON)
      VALUES (klient.NEXTVAL, :imie, :nazwisko, :ulica,:nr_domu,:miasto,:telefon )');
 
@@ -18,6 +34,9 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
     $result->bindParam(':miasto',$_POST['miasto'] );
     $result->bindParam(':telefon',$_POST['telefon'] );
     $result->execute();
+*/
+
+
 
     header('location: index.php?v=klienci/klienci');
 
