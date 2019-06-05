@@ -1,3 +1,7 @@
+
+
+
+
 </br></br>
 
 <h1>Magazyny</h1>
@@ -18,8 +22,7 @@
  ?>
 
 </br>
-<a href="index.php?v=magazyny/add_magazyn" class="btn btn-primary btn-lg">Dodaj magazyn</a>
-<a href="index.php?v=magazyny/find_magazyn" class="btn btn-primary btn-lg">Znajdz magazyn</a>
+<a href="index_kurier.php?v=magazyny/find_magazyn" class="btn btn-primary btn-lg">Znajdz magazyn</a>
 </br></br></br>
 
 <div class="table-responsive-md">
@@ -31,8 +34,7 @@
           <th>Ulica</th>
           <th>Numer</th>
           <th>Województwo</th>
-          <th>Edycja</th>
-          <th>Usuwanie</th>
+
       </tr>
       </thead>
 </div>
@@ -47,14 +49,7 @@
        <td><?php  echo $magazyn['ULICA'];   ?></td>
        <td><?php  echo $magazyn['NUMER'];   ?> </td>
        <td><?php  echo $magazyn['REGION'];   ?> </td>
-       <td>
-          <a href="index.php?v=magazyny/edit_magazyn&id=<?php echo $magazyn['ID_MAGAZYNU']; ?>" class="btn btn-success">Edytuj</a>
 
-        </td>
-       <td>
-          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=magazyny/delete_magazyn&id=<?php echo $magazyn['ID_MAGAZYNU']; ?>" class="btn btn-danger">Usuń</a>
-
-        </td>
 
    </tr>
 

@@ -1,10 +1,6 @@
 <?php
 
 
-
-
-
-
 if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
     $_POST['nr_domu'] , $_POST['miasto'] , $_POST['telefon'] )){
 
@@ -22,14 +18,27 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['ulica'] ,
 
       oci_execute($stmt);
 
+/*
+    $result = $pdo->prepare('UPDATE klienci SET imie = :imie, nazwisko = :nazwisko, ulica = :ulica,
+                                                nr_domu = :nr_domu, miasto = :miasto, telefon = :telefon
+                                                WHERE id_klienta = :id ');
 
-    header('location: index.php?v=klienci/klienci');
+    $result->bindParam(':imie',$_POST['imie'] );
+    $result->bindParam(':nazwisko',$_POST['nazwisko'] );
+    $result->bindParam(':ulica',$_POST['ulica'] );
+    $result->bindParam(':nr_domu',$_POST['nr_domu'] );
+    $result->bindParam(':miasto',$_POST['miasto'] );
+    $result->bindParam(':telefon',$_POST['telefon'] );
+    $result->bindParam(':id',$_GET['id']);
+    $result->execute();
+*/
+    header('location: index_kurier.php?v=klienci/klienci');
 }
 
 
 
 if(!isset($_GET['id'])){
-    header('location: index.php?v=klienci/klienci');
+    header('location: index_kurier.php?v=klienci/klienci');
 }
 /*
 $result = $pdo->prepare('SELECT * FROM klienci WHERE ID_KLIENTA= :id');
@@ -62,7 +71,7 @@ $klienci = oci_fetch_array($cur, OCI_BOTH);
 
       <label>Nazwisko</label>
       <input type="text" name="nazwisko" value="<?php echo $klienci['NAZWISKO'];  ?>" maxlength="60" class="form-control">
-    
+
       <label>Ulica</label>
       <input type="text" name="ulica" value="<?php echo $klienci['ULICA'];  ?>" maxlength="60" class="form-control">
 

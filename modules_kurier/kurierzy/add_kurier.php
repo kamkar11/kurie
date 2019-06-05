@@ -36,7 +36,7 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['email'] ,
 
       oci_execute($stmt);
 
-      header('location: index.php?v=kurierzy/kurierzy');
+      header('location: index_kurier.php?v=kurierzy/kurierzy');
 
   }
 

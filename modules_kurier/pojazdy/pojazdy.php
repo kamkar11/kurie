@@ -1,3 +1,5 @@
+
+
 </br></br>
 <h1>Pojazdy</h1>
 
@@ -18,8 +20,7 @@ oci_execute($cur);
  ?>
 
 </br>
-<a href="index.php?v=pojazdy/add_pojazd" class="btn btn-primary btn-lg">Dodaj pojazd</a>
-<a href="index.php?v=pojazdy/find_pojazd" class="btn btn-primary btn-lg">Znajdz pojazd</a>
+<a href="index_kurier.php?v=pojazdy/find_pojazd" class="btn btn-primary btn-lg">Znajdz pojazd</a>
 </br></br></br>
 
 <div class="table-responsive-md">
@@ -31,8 +32,7 @@ oci_execute($cur);
           <th>Model</th>
           <th>Nr_rej</th>
           <th>Poj_pojazdu[KG]</th>
-          <th>Edycja</th>
-          <th>Usuwanie</th>
+
       </tr>
       </thead>
 </div>
@@ -46,13 +46,7 @@ oci_execute($cur);
        <td><?php  echo $pojazd['MODEL_POJAZDU'];   ?></td>
        <td><?php  echo $pojazd['NR_REJESTRACYJNY'];   ?> </td>
        <td><?php  echo $pojazd['POJ_POJAZDU'];   ?> </td>
-       <td>
-          <a href="index.php?v=pojazdy/edit_pojazd&id=<?php echo $pojazd['ID_POJAZDU']; ?>" class="btn btn-success">Edytuj</a>
 
-        </td>
-       <td>
-          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=pojazdy/delete_pojazd&id=<?php echo $pojazd['ID_POJAZDU']; ?>" class="btn btn-danger">Usuń</a>
-        </td>
 
    </tr>
 

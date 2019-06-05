@@ -1,3 +1,6 @@
+
+
+
 </br></br>
 
 <h1>Klienci</h1>
@@ -34,8 +37,7 @@
  ?>
 
 </br>
-<a href="index.php?v=klienci/add_klient" class="btn btn-primary btn-lg">Dodaj klienta</a>
-<a href="index.php?v=klienci/find_klient" class="btn btn-primary btn-lg">Znajdz klienta</a>
+<a href="index_kurier.php?v=klienci/find_klient" class="btn btn-primary btn-lg">Znajdz klienta</a>
 </br></br></br>
 
 <div class="table-responsive-md">
@@ -49,8 +51,7 @@
           <th>nr_domu</th>
           <th>miasto</th>
           <th>telefon</th>
-          <th>Edycja</th>
-          <th>Usuwanie</th>
+
       </tr>
       </thead>
 </div>
@@ -67,13 +68,7 @@
        <td><?php  echo  $klient['NR_DOMU'];   ?> </td>
        <td><?php  echo  $klient['MIASTO'];   ?> </td>
        <td><?php  echo  $klient['TELEFON'];   ?> </td>
-       <td>
-          <a href="index.php?v=klienci/edit_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-success">Edytuj</a>
 
-        </td>
-       <td>
-          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=klienci/delete_klient&id=<?php echo $klient['ID_KLIENTA']; ?>" class="btn btn-danger">Usuń</a>
-        </td>
 
    </tr>
 

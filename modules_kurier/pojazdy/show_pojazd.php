@@ -1,20 +1,29 @@
 </br></br>
 
-<h1>Kurierzy</h1>
+<h1>Pojazd</h1>
 
 <?php
 
-    $cur = oci_new_cursor($conn);
-    $stmt = oci_parse($conn, "begin KURIERZY_ALL(:PLOUG_CURSOR); end;");
-    oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
-    oci_execute($stmt);
-    oci_execute($cur);
+if(!isset($_GET['id'])){
+    header('location: index_kurier.php?v=pojazdy/find_pojazd');
+}
+
+$cur = oci_new_cursor($conn);
+$stmt = oci_parse($conn, "begin SHOW_POJAZD_ID(:id, :PLOUG_CURSOR); end;");
+
+oci_bind_by_name($stmt, ":PLOUG_CURSOR", $cur, -1, OCI_B_CURSOR);
+oci_bind_by_name($stmt, ":id",  $_GET['id']);
+
+oci_execute($stmt);
+oci_execute($cur);
+$kurier = oci_fetch_array($cur, OCI_BOTH);
+
+
 
  ?>
 
 </br>
-<a href="index.php?v=kurierzy/add_kurier" class="btn btn-primary btn-lg">Dodaj kuriera</a>
-<a href="index.php?v=kurierzy/find_kurier" class="btn btn-primary btn-lg">Znajdz kuriera</a>
+
 </br></br></br>
 
 <div class="table-responsive-md">
@@ -32,15 +41,11 @@
           <th>Model</th>
           <th>godz_roz_pracy</th>
           <th>godz_zak_pracy</th>
-          <th>Edycja</th>
-          <th>Usuwanie</th>
+
       </tr>
       </thead>
 </div>
-  <?php
-    //foreach ($klienci as $klient) {
-    while (($kurier = oci_fetch_array($cur, OCI_BOTH))) {
-   ?>
+
 
    <tr>
 
@@ -52,19 +57,13 @@
        <td><?php  echo  $kurier['NR_REJESTRACYJNY'];   ?> </td>
        <td><?php  echo  $kurier['MARKA'];   ?> </td>
        <td><?php  echo  $kurier['MODEL_POJAZDU'];   ?> </td>
-       <td><?php  echo  $kurier[9];   ?> </td>
        <td><?php  echo  $kurier[10];   ?> </td>
-       <td>
-          <a href="index.php?v=kurierzy/edit_kurier&id=<?php echo $kurier['ID_KURIERA']; ?>" class="btn btn-success">Edytuj</a>
+       <td><?php  echo  $kurier[11];   ?> </td>
 
-        </td>
-       <td>
-          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=kurierzy/delete_kurier&id=<?php echo $kurier['ID_KURIERA']; ?>" class="btn btn-danger">Usuń</a>
-        </td>
 
    </tr>
 
-  <?php } ?>
+
 
 
 

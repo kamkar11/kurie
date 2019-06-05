@@ -1,3 +1,6 @@
+
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,15 +23,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="index.php?v=klienci/klienci">Klienci <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="index.php?v=pojazdy/pojazdy">Pojazdy</a>
-      <a class="nav-item nav-link" href="index.php?v=magazyny/magazyny">Magazyny</a>
-      <a class="nav-item nav-link" href="index.php?v=kurierzy/kurierzy">Kurierzy</a>
-      <a class="nav-item nav-link" href="index.php?v=paczki/paczki">Paczki</a>
+      <a class="nav-item nav-link" href="index_kurier.php?v=klienci/klienci">Klienci <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="index_kurier.php?v=pojazdy/pojazdy">Pojazdy</a>
+      <a class="nav-item nav-link" href="index_kurier.php?v=magazyny/magazyny">Magazyny</a>
+      <a class="nav-item nav-link" href="index_kurier.php?v=kurierzy/kurierzy">Kurierzy</a>
+      <a class="nav-item nav-link" href="index_kurier.php?v=paczki/paczki">Paczki</a>
     </div>
   </div>
   <label style="color: yellow;"><?php echo $_SESSION['kurier']  ?></label><br/><br/>
-  <a href="logout.php" class="btn btn-success">Wyloguj</a>
+  <a href="loout_kurier.php" class="btn btn-success">Wyloguj</a>
 </nav>
 
 
@@ -40,7 +43,7 @@
     <div class="navbar navbar-fixed-bottom">
         <div class="navbar-inner">
             <div class="width-constraint clearfix">
-                <p class="pull-left muted credit">DOSTAWY.PL v1.0.0</p>
+                <p class="pull-left muted credit">DOSTAWY.PL  v1.0.0</p>
 
                 <p class="pull-right muted credit">©2019 • CONFIDENTIAL ALL RIGHTS RESERVED</p>
             </div>

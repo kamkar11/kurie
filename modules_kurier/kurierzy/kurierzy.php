@@ -1,3 +1,5 @@
+
+
 </br></br>
 
 <h1>Kurierzy</h1>
@@ -13,8 +15,7 @@
  ?>
 
 </br>
-<a href="index.php?v=kurierzy/add_kurier" class="btn btn-primary btn-lg">Dodaj kuriera</a>
-<a href="index.php?v=kurierzy/find_kurier" class="btn btn-primary btn-lg">Znajdz kuriera</a>
+<a href="index_kurier.php?v=kurierzy/find_kurier" class="btn btn-primary btn-lg">Znajdz kuriera</a>
 </br></br></br>
 
 <div class="table-responsive-md">
@@ -32,8 +33,7 @@
           <th>Model</th>
           <th>godz_roz_pracy</th>
           <th>godz_zak_pracy</th>
-          <th>Edycja</th>
-          <th>Usuwanie</th>
+
       </tr>
       </thead>
 </div>
@@ -54,13 +54,7 @@
        <td><?php  echo  $kurier['MODEL_POJAZDU'];   ?> </td>
        <td><?php  echo  $kurier[9];   ?> </td>
        <td><?php  echo  $kurier[10];   ?> </td>
-       <td>
-          <a href="index.php?v=kurierzy/edit_kurier&id=<?php echo $kurier['ID_KURIERA']; ?>" class="btn btn-success">Edytuj</a>
 
-        </td>
-       <td>
-          <a onclick="return confirm('Usunąć ten rekord?')" href="index.php?v=kurierzy/delete_kurier&id=<?php echo $kurier['ID_KURIERA']; ?>" class="btn btn-danger">Usuń</a>
-        </td>
 
    </tr>
 

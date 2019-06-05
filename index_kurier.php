@@ -2,16 +2,22 @@
 
 session_start();
 
-if (!isset($_SESSION['kurier']))
+if (!isset($_SESSION['kurier'],$_SESSION["kurier_id"] ))
 {
-  header('Location: login.php');
+  header('Location: login_kurier.php');
   exit();
 }
+
+
 
 include('db/pdo.php');
 include('utils/utils.php');
 
-//dump($_GET);
+
+
+
+
+
 
 
 
@@ -19,7 +25,7 @@ include('utils/utils.php');
     $module = $_GET['v'];
   }
   else{
-      $module = 'klienci/klienci';
+      $module = 'paczki/paczki';
   }
 
 /*
@@ -34,7 +40,7 @@ include('utils/utils.php');
     }
 */
 
-  $moduleDir = 'modules/' . $module . '.php';
+  $moduleDir = 'modules_kurier/' . $module . '.php';
 
 
 
@@ -45,7 +51,7 @@ include('utils/utils.php');
        $content = ob_get_contents();
        ob_end_clean();
 
-       include('layouts/admin.php');
+       include('layouts/kurier.php');
     }
     else {
       header("HTTP/1.1 404 Not Found");

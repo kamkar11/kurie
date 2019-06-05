@@ -1,7 +1,7 @@
 <?php
 
 if(!isset($_GET['id'])){
-        header('location: index.php?v=kurierzy/kurierzy');
+        header('location: index_kurier.php?v=kurierzy/kurierzy');
 }
 /*
 $result = $pdo->prepare('DELETE FROM klienci WHERE id_klienta = :id');
@@ -18,6 +18,6 @@ oci_execute($stmt);
 
 
 
-    header('location: index.php?v=kurierzy/kurierzy');
+    header('location: index_kurier.php?v=kurierzy/kurierzy');
 
  ?>

@@ -30,14 +30,14 @@ if(isset($_POST['imie'] , $_POST['nazwisko'] , $_POST['email'] ,
 
 
 
-    header('location: index.php?v=kurierzy/kurierzy');
+    header('location: index_kurier.php?v=kurierzy/kurierzy');
 
 }
 
 
 
 if(!isset($_GET['id'])){
-    header('location: index.php?v=kurierzy/kurierzy');
+    header('location: index_kurier.php?v=kurierzy/kurierzy');
 }
 /*
 $result = $pdo->prepare('SELECT * FROM klienci WHERE ID_KLIENTA= :id');
